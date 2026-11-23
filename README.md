@@ -47,9 +47,9 @@ audios/originales/                  audios/encoded/ + keys/                 audi
 ```text
 Proyecto_Analisis_Senales/
 ├── audios/
-│   ├── originales/                # Audios fuente: target.wav y secret1.wav .. secret5.wav
-│   ├── encoded/                   # Audios codificados: encoded_1.wav .. encoded_5.wav
-│   └── recovered/                 # Audios recuperados: recovered_1.wav .. recovered_5.wav
+│   ├── originales/                # Audios fuente (versionados en el repo): target.wav y secret1..5.wav
+│   ├── encoded/                   # Generados al ejecutar imitation.py (excluidos del repo)
+│   └── recovered/                 # Generados al ejecutar reverse.py (excluidos del repo)
 ├── keys/
 │   ├── FFT_key_1.csv              # Claves de permutación generadas por imitation.py
 │   ├── FFT_key_2.csv
