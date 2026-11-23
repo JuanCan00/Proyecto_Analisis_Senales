@@ -111,32 +111,15 @@ python reverse.py
 
 ## Ejecución en Google Colab
 
-Los scripts `imitation.py` y `reverse.py` son multiplataforma (funcionan sin cambios en **Windows/Linux local** y en **Google Colab**). Como el repositorio es **privado**, puedes ejecutarlo en Colab de dos formas:
-
-### Opción A — Abrir `Ejecutar_en_Colab.ipynb` directamente desde Colab (recomendado)
-
-1. Abre [Google Colab](https://colab.research.google.com/).
-2. Ve a **Archivo → Abrir cuaderno → GitHub**.
-3. Marca la casilla **Incluir repositorios privados** y autoriza tu cuenta de GitHub.
-4. Selecciona `JuanCan00/Proyecto_Analisis_Senales` y abre **`Ejecutar_en_Colab.ipynb`**.
-5. Ejecuta las celdas en orden:
-   - La **celda 1** clona el repositorio en Colab (solicita de forma segura tu *GitHub Personal Access Token* con permiso `repo`, o lo lee automáticamente desde *Colab Secrets* si lo guardaste como `GITHUB_TOKEN`).
-   - Las **celdas 3 y 4** ejecutan `!python imitation.py` y `!python reverse.py`.
-   - La **celda 5** permite escuchar los audios originales, codificados y recuperados directamente en el navegador.
-
-### Opción B — Clonar desde un cuaderno en blanco de Colab
+Abre [Ejecutar_en_Colab.ipynb](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/Ejecutar_en_Colab.ipynb) en Google Colab, o ejecuta directamente en un cuaderno:
 
 ```python
-from getpass import getpass
-
-token = getpass("GitHub Personal Access Token (permiso repo): ")
-!git clone https://{token}@github.com/JuanCan00/Proyecto_Analisis_Senales.git
+!git clone https://github.com/JuanCan00/Proyecto_Analisis_Senales.git
 %cd Proyecto_Analisis_Senales
+!pip install -q numpy scipy
 !python imitation.py
 !python reverse.py
 ```
-
-*(Si en algún momento cambias el repositorio a público, el botón **Open in Colab** de la parte superior funcionará directamente y no necesitarás token.)*
 
 ---
 
