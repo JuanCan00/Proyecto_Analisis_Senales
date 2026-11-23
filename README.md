@@ -50,12 +50,7 @@ Proyecto_Analisis_Senales/
 │   ├── originales/                # Audios fuente (versionados en el repo): target.wav y secret1..5.wav
 │   ├── encoded/                   # Generados al ejecutar imitation.py (excluidos del repo)
 │   └── recovered/                 # Generados al ejecutar reverse.py (excluidos del repo)
-├── keys/
-│   ├── FFT_key_1.csv              # Claves de permutación generadas por imitation.py
-│   ├── FFT_key_2.csv
-│   ├── FFT_key_3.csv
-│   ├── FFT_key_4.csv
-│   └── FFT_key_5.csv
+├── keys/                          # Claves FFT_key_1..5.csv generadas al ejecutar imitation.py (excluidas del repo)
 ├── imitation.py                   # Paso 1: codificación espectral (genera encoded + claves)
 ├── reverse.py                     # Paso 2: recuperación espectral (genera recovered)
 ├── Ejecutar_en_Colab.ipynb        # Cuaderno lanzador para ejecutar en Google Colab

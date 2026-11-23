@@ -1,6 +1,7 @@
-# Audios generados al ejecutar imitation.py y reverse.py (no se versionan en Git)
+# Archivos generados al ejecutar imitation.py y reverse.py (no se versionan en Git)
 audios/encoded/*.wav
 audios/recovered/*.wav
+keys/*.csv
 
 # Caché de Python
 __pycache__/
