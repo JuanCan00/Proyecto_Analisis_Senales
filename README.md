@@ -6,6 +6,7 @@ Proyecto en Python que oculta cinco mensajes de audio mediante la permutación b
 ![NumPy](https://img.shields.io/badge/NumPy-FFT%20%26%20Arrays-013243?style=flat-square&logo=numpy&logoColor=white)
 ![SciPy](https://img.shields.io/badge/SciPy-rFFT%20%26%20WAV-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
 ![Área](https://img.shields.io/badge/%C3%81rea-An%C3%A1lisis%20de%20Se%C3%B1ales-0F766E?style=flat-square)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/Ejecutar_en_Colab.ipynb)
 
 ---
 
@@ -57,6 +58,7 @@ Proyecto_Analisis_Senales/
 │   └── FFT_key_5.csv
 ├── imitation.py                   # Paso 1: codificación espectral (genera encoded + claves)
 ├── reverse.py                     # Paso 2: recuperación espectral (genera recovered)
+├── Ejecutar_en_Colab.ipynb        # Cuaderno lanzador para ejecutar en Google Colab
 ├── EXPLICACION_IMITATION.md       # Desarrollo matemático y computacional de imitation.py
 └── README.md                      # Documentación principal del repositorio
 ```
@@ -109,6 +111,37 @@ python reverse.py
 
 > [!NOTE]
 > `reverse.py` **no genera ni modifica claves**: depende estrictamente de los archivos generados por `imitation.py`.
+
+---
+
+## Ejecución en Google Colab
+
+Los scripts `imitation.py` y `reverse.py` son multiplataforma (funcionan sin cambios en **Windows/Linux local** y en **Google Colab**). Como el repositorio es **privado**, puedes ejecutarlo en Colab de dos formas:
+
+### Opción A — Abrir `Ejecutar_en_Colab.ipynb` directamente desde Colab (recomendado)
+
+1. Abre [Google Colab](https://colab.research.google.com/).
+2. Ve a **Archivo → Abrir cuaderno → GitHub**.
+3. Marca la casilla **Incluir repositorios privados** y autoriza tu cuenta de GitHub.
+4. Selecciona `JuanCan00/Proyecto_Analisis_Senales` y abre **`Ejecutar_en_Colab.ipynb`**.
+5. Ejecuta las celdas en orden:
+   - La **celda 1** clona el repositorio en Colab (solicita de forma segura tu *GitHub Personal Access Token* con permiso `repo`, o lo lee automáticamente desde *Colab Secrets* si lo guardaste como `GITHUB_TOKEN`).
+   - Las **celdas 3 y 4** ejecutan `!python imitation.py` y `!python reverse.py`.
+   - La **celda 5** permite escuchar los audios originales, codificados y recuperados directamente en el navegador.
+
+### Opción B — Clonar desde un cuaderno en blanco de Colab
+
+```python
+from getpass import getpass
+
+token = getpass("GitHub Personal Access Token (permiso repo): ")
+!git clone https://{token}@github.com/JuanCan00/Proyecto_Analisis_Senales.git
+%cd Proyecto_Analisis_Senales
+!python imitation.py
+!python reverse.py
+```
+
+*(Si en algún momento cambias el repositorio a público, el botón **Open in Colab** de la parte superior funcionará directamente y no necesitarás token.)*
 
 ---
 

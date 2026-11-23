@@ -154,9 +154,17 @@ def recuperar_audio(
     return int(fs), recovered
 
 
-def main() -> None:
-    """Ejecuta Reverse de forma independiente para los cinco audios codificados."""
-    raiz = Path(__file__).resolve().parent
+def main(base_dir: str | Path | None = None) -> None:
+    """Ejecuta Reverse de forma independiente para los cinco audios codificados.
+
+    Compatible tanto con ejecución local (`python reverse.py`) como con
+    Google Colab (`!python reverse.py`, `%run reverse.py` o `import reverse`).
+    """
+    raiz = (
+        Path(base_dir).resolve()
+        if base_dir is not None
+        else (Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd())
+    )
     dir_encoded = raiz / "audios" / "encoded"
     dir_keys = raiz / "keys"
     dir_recovered = raiz / "audios" / "recovered"

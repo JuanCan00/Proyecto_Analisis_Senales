@@ -279,9 +279,17 @@ def guardar_audio_codificado(ruta_wav: Path, encoded: np.ndarray, fs: int) -> No
     wav_write(str(ruta_wav), fs, encoded.astype(np.float32))
 
 
-def main() -> None:
-    """Procesa los cinco audios secretos usando el mismo Target."""
-    raiz = Path(__file__).resolve().parent
+def main(base_dir: str | Path | None = None) -> None:
+    """Procesa los cinco audios secretos usando el mismo Target.
+
+    Compatible tanto con ejecución local (`python imitation.py`) como con
+    Google Colab (`!python imitation.py`, `%run imitation.py` o `import imitation`).
+    """
+    raiz = (
+        Path(base_dir).resolve()
+        if base_dir is not None
+        else (Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd())
+    )
     dir_originales = raiz / "audios" / "originales"
     dir_codificados = raiz / "audios" / "encoded"
     dir_claves = raiz / "keys"
