@@ -6,7 +6,7 @@ Proyecto en Python que oculta cinco mensajes de audio mediante la permutación b
 ![NumPy](https://img.shields.io/badge/NumPy-FFT%20%26%20Arrays-013243?style=flat-square&logo=numpy&logoColor=white)
 ![SciPy](https://img.shields.io/badge/SciPy-rFFT%20%26%20WAV-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
 ![Área](https://img.shields.io/badge/%C3%81rea-An%C3%A1lisis%20de%20Se%C3%B1ales-0F766E?style=flat-square)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/Ejecutar_en_Colab.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/ProyectoAnalisisColab.ipynb)
 
 ---
 
@@ -50,11 +50,12 @@ Proyecto_Analisis_Senales/
 │   ├── originales/                # Audios fuente (versionados en el repo): target.wav y secret1..5.wav
 │   ├── encoded/                   # Generados al ejecutar imitation.py (excluidos del repo)
 │   └── recovered/                 # Generados al ejecutar reverse.py (excluidos del repo)
+├── graficas/                      # Gráficas espectrales comparativas (Target, Secret, Encoded y Reverse)
 ├── keys/                          # Claves FFT_key_1..5.csv generadas al ejecutar imitation.py (excluidas del repo)
 ├── imitation.py                   # Paso 1: codificación espectral (genera encoded + claves)
 ├── reverse.py                     # Paso 2: recuperación espectral (genera recovered)
-├── Ejecutar_en_Colab.ipynb        # Cuaderno lanzador para ejecutar en Google Colab
-├── EXPLICACION_IMITATION.md       # Desarrollo matemático y computacional de imitation.py
+├── evaluacion.py                  # Paso 3: evaluación de calidad (SNR y correlación de Pearson)
+├── ProyectoAnalisisColab.ipynb        # Cuaderno lanzador para ejecutar en Google Colab
 └── README.md                      # Documentación principal del repositorio
 ```
 
@@ -111,7 +112,7 @@ python reverse.py
 
 ## Ejecución en Google Colab
 
-Abre [Ejecutar_en_Colab.ipynb](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/Ejecutar_en_Colab.ipynb) en Google Colab, o ejecuta directamente en un cuaderno:
+Abre [ProyectoAnalisisColab.ipynb](https://colab.research.google.com/github/JuanCan00/Proyecto_Analisis_Senales/blob/main/ProyectoAnalisisColab.ipynb) en Google Colab, o ejecuta directamente en un cuaderno:
 
 ```python
 !git clone https://github.com/JuanCan00/Proyecto_Analisis_Senales.git
@@ -119,6 +120,7 @@ Abre [Ejecutar_en_Colab.ipynb](https://colab.research.google.com/github/JuanCan0
 !pip install -q numpy scipy
 !python imitation.py
 !python reverse.py
+!python evaluacion.py
 ```
 
 ---
@@ -132,6 +134,27 @@ Abre [Ejecutar_en_Colab.ipynb](https://colab.research.google.com/github/JuanCan0
 | `audios/originales/secret3.wav` | `audios/encoded/encoded_3.wav` | `keys/FFT_key_3.csv` | `audios/recovered/recovered_3.wav` |
 | `audios/originales/secret4.wav` | `audios/encoded/encoded_4.wav` | `keys/FFT_key_4.csv` | `audios/recovered/recovered_4.wav` |
 | `audios/originales/secret5.wav` | `audios/encoded/encoded_5.wav` | `keys/FFT_key_5.csv` | `audios/recovered/recovered_5.wav` |
+
+---
+
+## Resultados espectrales
+
+Las siguientes figuras muestran cómo la reorganización espectral modifica la distribución de cada **Secret** para que sus picos principales se ubiquen en posiciones similares a las del **Target** (**Encoded**), sin alterar los coeficientes originales, y cómo el algoritmo **Reverse** recupera de forma exacta el espectro original (**Recovered**).
+
+### Secret 1
+![Comparación espectral Secret 1](graficas/espectro_secret1.png)
+
+### Secret 2
+![Comparación espectral Secret 2](graficas/espectro_secret2.png)
+
+### Secret 3
+![Comparación espectral Secret 3](graficas/espectro_secret3.png)
+
+### Secret 4
+![Comparación espectral Secret 4](graficas/espectro_secret4.png)
+
+### Secret 5
+![Comparación espectral Secret 5](graficas/espectro_secret5.png)
 
 ---
 
@@ -161,13 +184,15 @@ Abre [Ejecutar_en_Colab.ipynb](https://colab.research.google.com/github/JuanCan0
 
 ---
 
-## Documentación complementaria
+## Integrantes
 
-Para el desarrollo matemático y computacional detallado de `imitation.py` (variables, escalado PCM de 24 bits, `rfft`, `argsort`, permutación biyectiva `K`, DC/Nyquist e `irfft`), consulta [EXPLICACION_IMITATION.md](EXPLICACION_IMITATION.md).
+| Nombre | Código |
+| :--- | :--- |
+| Samuel Tomás Daza Cordero | `1401783` |
+| Jefferson Arley Fontecha Soler | `1401702` |
+| Juan Pablo Cano Chávez | `1401596` |
 
----
-
-## Autor
-
-**Juan Pablo Cano** · [@JuanCan00](https://github.com/JuanCan00)  
-Ingeniería en Telecomunicaciones — Universidad Militar Nueva Granada
+**Universidad:** Universidad Militar Nueva Granada  
+**Programa:** Ingeniería de Telecomunicaciones  
+**Asignatura:** Análisis de Señales  
+**Profesora:** Dora María Ballesteros
